@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FakerLibrary.Interfaces
 {
-    internal interface IFaker
+    public interface IFaker
     {
         public T Create<T>();
     }
