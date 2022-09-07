@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace FakerLibrary.GeneratorClasses
 {
-    internal class ClassGenerator : IValueGenerator
+    public class ClassGenerator : IValueGenerator
     {
+        
         public bool CanGenerate(Type type)
         {
-            if (type.IsClass)
+            if (type.IsClass && !type.IsGenericType)
             {
                 return true;
             }

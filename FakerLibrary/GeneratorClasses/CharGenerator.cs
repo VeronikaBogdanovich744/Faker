@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FakerLibrary.GeneratorClasses
 {
-    internal class CharGenerator : IValueGenerator
+    public class CharGenerator : IValueGenerator
     {
         public bool CanGenerate(Type type)
         {

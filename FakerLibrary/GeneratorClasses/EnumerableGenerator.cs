@@ -7,21 +7,13 @@ using System.Threading.Tasks;
 
 namespace FakerLibrary.GeneratorClasses
 {
-    public class IntGenerator : IValueGenerator
+    public class EnumerableGenerator : IValueGenerator
     {
-        public IntGenerator()
-        {
-
-        }
         public bool CanGenerate(Type type)
         {
-            if (type.IsValueType == true)
+            if (type.GetInterfaces().Contains(typeof(IEnumerable<>)))
             {
-                if (type == typeof(int) || type == typeof(byte) || type == typeof(short) || type == typeof(sbyte) || type == typeof(ushort) || type == typeof(uint) || type == typeof(long) || type == typeof(ulong))
-                {
-                    return true;
-                }
-                return false;
+                return true;
             }
             return false;
         }

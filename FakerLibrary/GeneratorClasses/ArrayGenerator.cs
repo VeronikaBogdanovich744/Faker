@@ -7,16 +7,13 @@ using System.Threading.Tasks;
 
 namespace FakerLibrary.GeneratorClasses
 {
-    public class FloatGenerator : IValueGenerator
+    public class ArrayGenerator : IValueGenerator
     {
-        public bool CanGenerate(Type type)
+        public  bool CanGenerate(Type type)
         {
-            if (type.IsValueType == true) { 
-                if (type == typeof(float) || type == typeof(double) || type == typeof(decimal))
-                {
+            if (type.IsArray)
+            {
                 return true;
-                }
-                return false;
             }
             return false;
         }

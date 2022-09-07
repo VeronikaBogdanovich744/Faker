@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FakerLibrary.GeneratorClasses
+namespace FakerLibrary
 {
     public class GeneratorContext
     {
