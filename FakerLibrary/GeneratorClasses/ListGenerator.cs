@@ -13,7 +13,7 @@ namespace FakerLibrary.GeneratorClasses
     {
         public bool CanGenerate(Type type)
         {
-            if (type.GetGenericTypeDefinition() == typeof(List<>))
+            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>))
             {
                 return true;
             }

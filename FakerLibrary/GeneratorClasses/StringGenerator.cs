@@ -20,7 +20,13 @@ namespace FakerLibrary.GeneratorClasses
 
         public object Generate(Type typeToGenerate, GeneratorContext context)
         {
-            throw new NotImplementedException();
+            string str = "";
+            byte count = (byte)context.Random.Next(0, 50);
+            for (int i = 0; i < count; i++)
+            {
+                str += (char)context.Random.Next('A', 'z');
+            }
+            return str;
         }
 
         public object Generate(Type type)

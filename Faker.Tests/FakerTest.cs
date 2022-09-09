@@ -37,6 +37,13 @@ namespace Faker.Tests
               SetUp();
               var instance = faker.Create<int[]>();
           }
-       
+
+        [TestMethod]
+        public void CreateStringTypeInstance()
+        {
+            SetUp();
+            var instance = faker.Create<string>();
+        }
+
     }
 }
