@@ -60,7 +60,7 @@ namespace FakerLibrary.GeneratorClasses
                 case TypeCode.Char: return (char)random.Next('A', 'z');
                 case TypeCode.Int16: return (short)random.Next();
                 case TypeCode.UInt16: return (ushort)random.Next();
-                case TypeCode.Int32: return random.Next(0,500);
+                case TypeCode.Int32: return random.Next();
                 case TypeCode.UInt32: return (uint)random.Next();
                 case TypeCode.Int64: return LongRandom(long.MinValue, long.MaxValue, random);
                 case TypeCode.UInt64: return (ulong)LongRandom(long.MinValue, long.MaxValue, random);

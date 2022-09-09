@@ -48,7 +48,7 @@ namespace Faker.Tests
         [TestMethod]
         public void CheckIEnumerables()
         {
-            SetUp(new EnumerableGenerator());
+            SetUp(new ListGenerator());
             Assert.IsFalse(generator.CanGenerate(typeof(int)));
             Assert.IsFalse(generator.CanGenerate(typeof(string)));
             Assert.IsFalse(generator.CanGenerate(typeof(int[])));

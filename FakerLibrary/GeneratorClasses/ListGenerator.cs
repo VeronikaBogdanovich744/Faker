@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FakerLibrary.GeneratorClasses
 {
-    public class EnumerableGenerator : IValueGenerator
+    public class ListGenerator : IValueGenerator
     {
         public bool CanGenerate(Type type)
         {

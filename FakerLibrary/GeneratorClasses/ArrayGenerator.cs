@@ -1,5 +1,6 @@
 ﻿using FakerLibrary.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,24 +21,19 @@ namespace FakerLibrary.GeneratorClasses
 
         public object Generate(Type typeToGenerate, GeneratorContext context)
         {
-            // var obj = Activator.CreateInstance(typeof(Array), context.parameters);
-            /* foreach (var f in typeToGenerate.GetFields().Where(f => f.IsPublic))
-             {
-                 if (f.GetValue(obj) == null)
-                 {
-                     f.SetValue(obj, context.Faker.Create(f.FieldType));
-                 }
-             }
-             foreach (var f in typeToGenerate.GetProperties().Where(f => f.CanWrite))
-             {
-                 if (f.GetValue(obj) == null)
-                 {
-                     f.SetValue(obj, context.Faker.Create(f.PropertyType));
-                 }
-             }*/
+            int size = context.Random.Next(Byte.MaxValue / 2);
+            Type innerType = typeToGenerate.GetElementType();
+            Array array = Array.CreateInstance(innerType, size);
+            // object array = (IList)Activator.CreateInstance(typeof(Array).MakeGenericType(genericType));
+            // var generator = new Generator();
 
-            //return obj;
-            throw new NotImplementedException();
+            for (int i = 0; i < size; i++)
+            {
+                array.SetValue(context.Faker.Create(innerType), i);
+
+
+            }
+            return array;
         }
 
         public object Generate(Type type)
