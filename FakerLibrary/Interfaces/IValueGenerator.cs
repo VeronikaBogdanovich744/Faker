@@ -13,5 +13,7 @@ namespace FakerLibrary.Interfaces
         // подходит ли генератор. Таким образом можно работать с генераторами
         // коллекций аналогично генераторам примитивных типов.
         bool CanGenerate(Type type);
+
+        object Generate(Type type);
     }
 }

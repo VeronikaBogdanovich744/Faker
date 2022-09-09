@@ -6,14 +6,16 @@ namespace FakerLibrary
 {
     public class Faker: IFaker
     {
+        Generator generator;
+        ConstructorInfo constructor;
         public Faker()
         {
-
+            generator = new Generator();
         }
         //
         public Faker(int i)
         {
-
+            generator = new Generator();
         }
         //
         public T Create<T>()
@@ -21,20 +23,24 @@ namespace FakerLibrary
             return (T)Create(typeof(T));
         }
 
-        private object Create(Type t) // метод для внутреннего использования
+        public object Create(Type t) // метод для внутреннего использования
         {
-            var constructorClass = new Constructor(t);
-          //  ParameterInfo[] parameters = null;
-            ConstructorInfo constructor = constructorClass.theHighestNumberParametersConstructor();
-            if (constructor == null)
-            {
-                //create value type instance
-                return Activator.CreateInstance(t);
-            }
-            else
-            {
-                return CreateInstanceWithParameters(t, constructorClass.parameters);
-            }
+            /* var constructorClass = new Constructor(t);
+           //  ParameterInfo[] parameters = null;
+              constructor = constructorClass.theHighestNumberParametersConstructor();
+             if (constructor == null)
+             {
+
+                 //create value type instance
+                 //value types generator
+                 return generator.createRandomValue(t);//Activator.CreateInstance(t);
+             }
+             else
+             {
+                 return CreateInstanceWithParameters(t, constructorClass.parameters);
+             }*/
+            GeneratorContext context = new GeneratorContext(this);
+            return generator.createRandomValue(t, context);
         }
 
         private object CreateInstanceWithParameters(Type t, ParameterInfo[] parameters)
@@ -46,7 +52,8 @@ namespace FakerLibrary
                 parametersInstance[i] = Create(parameter.ParameterType);
                 i++;
             }
-            return Activator.CreateInstance(t, parametersInstance);
+            GeneratorContext context = new GeneratorContext(constructor, parametersInstance,this);
+            return generator.createRandomValue(t, context);//Activator.CreateInstance(t, parametersInstance);
         } 
     }
 }

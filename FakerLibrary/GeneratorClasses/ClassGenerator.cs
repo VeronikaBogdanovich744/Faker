@@ -23,5 +23,10 @@ namespace FakerLibrary.GeneratorClasses
         {
             throw new NotImplementedException();
         }
+
+        public object Generate(Type type)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

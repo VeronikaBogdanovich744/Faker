@@ -18,23 +18,13 @@ namespace Faker.Tests
             generator = _generator;
         }
         [TestMethod]
-        public void CheckInts()
+        public void CheckBaseValues()
         {
-            SetUp(new IntGenerator());
+            SetUp(new BaseValueGenerator());
             Assert.IsTrue(generator.CanGenerate(typeof(int)));
-            Assert.IsFalse(generator.CanGenerate(typeof(double)));
-            Assert.IsFalse(generator.CanGenerate(typeof(char)));
-            Assert.IsFalse(generator.CanGenerate(typeof(ClassGenerator)));
-        }
-
-        [TestMethod]
-        public void CheckFloats()
-        {
-            SetUp(new FloatGenerator());
             Assert.IsTrue(generator.CanGenerate(typeof(double)));
-            Assert.IsFalse(generator.CanGenerate(typeof(char)));
+            Assert.IsTrue(generator.CanGenerate(typeof(char)));
             Assert.IsFalse(generator.CanGenerate(typeof(ClassGenerator)));
-            Assert.IsFalse(generator.CanGenerate(typeof(List<double>)));
         }
 
         [TestMethod]

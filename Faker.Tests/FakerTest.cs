@@ -30,5 +30,13 @@ namespace Faker.Tests
             SetUp();
             var instance = faker.Create<List<int>>();
         }
+
+        /*  [TestMethod]
+          public void CreateArrayTypeInstance()
+          {
+              SetUp();
+              var instance = faker.Create<int[]>();
+          }*/
+       
     }
 }

@@ -20,7 +20,20 @@ namespace Faker.Tests
         [TestMethod]
         public void CheckInts()
         {
+           SetUp();
+          //  generator.createRandomValuesObject(typeof(int));
+          //var gen= generator.getGenerator(typeof(int));
+         // Assert.AreEqual(typeof(BaseValueGenerator), gen);
+        }
+
+        [TestMethod]
+        public void CheckArrays()
+        {
             SetUp();
+            //generator
+            //  generator.createRandomValuesObject(typeof(int));
+            //var gen= generator.getGenerator(typeof(int));
+            // Assert.AreEqual(typeof(BaseValueGenerator), gen);
         }
     }
 }
