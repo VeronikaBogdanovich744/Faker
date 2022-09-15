@@ -53,9 +53,6 @@ namespace Faker.Tests
             Assert.IsFalse(generator.CanGenerate(typeof(string)));
             Assert.IsFalse(generator.CanGenerate(typeof(int[])));
             Assert.IsTrue(generator.CanGenerate(typeof(List<int>)));
-            Assert.IsTrue(generator.CanGenerate(typeof(IEnumerable<int>)));
-            Assert.IsTrue(generator.CanGenerate(typeof(ICollection<int>)));
-            Assert.IsTrue(generator.CanGenerate(typeof(IList<int>)));
         }
 
         [TestMethod]

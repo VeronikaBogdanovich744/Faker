@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,26 +11,35 @@ namespace FakerLibrary
 {
     internal class Constructor
     {
+        internal ConstructorInfo[]? constructors { get; private set; }
         ConstructorInfo? constructor;
-       internal ParameterInfo[]? parameters;
-        Type type;
+        internal ParameterInfo[]? parameters;
+        private static Constructor instance = null;
        
-        internal Constructor(Type t)
+        private Constructor(Type t)
         {
             parameters = null;
             constructor = null;
-            type = t;
+            constructors = t.GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic);
+        }
+
+        internal static Constructor CreateInstance(Type type)
+        {
+            if (instance == null)
+            {
+                instance = new Constructor(type);
+            }
+            return instance;
         }
 
         internal ConstructorInfo theHighestNumberParametersConstructor()
         {
-            ConstructorInfo[] constructorsInfo = type.GetConstructors();
+            constructor = null;
             int maxParameterNumber = 0;
-            //ConstructorInfo constructor = null;
-            foreach (ConstructorInfo currentConstructor in constructorsInfo)
+            foreach (ConstructorInfo currentConstructor in constructors)
             {
                 var parametersInfo = currentConstructor.GetParameters();
-                if (parametersInfo.Length > maxParameterNumber)
+                if (parametersInfo.Length >= maxParameterNumber)
                 {
                     maxParameterNumber = parametersInfo.Length;
                     constructor = currentConstructor;
@@ -39,6 +49,10 @@ namespace FakerLibrary
 
             }
             return constructor;
+        }
+        internal void deleteConstrucor(ConstructorInfo constructorInfo)
+        {
+            constructors = constructors.Where(val => val != constructorInfo).ToArray();
         }
     }
 }

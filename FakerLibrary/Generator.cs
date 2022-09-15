@@ -31,24 +31,16 @@ namespace FakerLibrary
                 {
                     return generator;
                 }
-              
             }
             return null;
         }
 
-        public object createRandomValue(Type type)
-        {
-            getGenerator(type);
-            if (generator.GetType() != typeof(ClassGenerator))
-            return generator.Generate(type);
-            
-            return null;
-            
-        }
-
         public object createRandomValue(Type type, GeneratorContext generatorContext)
         {
-            getGenerator(type);
+            if (getGenerator(type) == null)
+            {
+                return DefaultGenerator.GetDefaultValue(type);  
+            }
             return generator.Generate(type, generatorContext);
         }
     }

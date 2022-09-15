@@ -24,8 +24,6 @@ namespace FakerLibrary.GeneratorClasses
             int size = context.Random.Next(Byte.MaxValue / 2);
             Type innerType = typeToGenerate.GetElementType();
             Array array = Array.CreateInstance(innerType, size);
-            // object array = (IList)Activator.CreateInstance(typeof(Array).MakeGenericType(genericType));
-            // var generator = new Generator();
 
             for (int i = 0; i < size; i++)
             {
@@ -36,9 +34,5 @@ namespace FakerLibrary.GeneratorClasses
             return array;
         }
 
-        public object Generate(Type type)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

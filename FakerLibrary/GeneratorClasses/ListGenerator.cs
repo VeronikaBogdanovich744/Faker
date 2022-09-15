@@ -35,9 +35,5 @@ namespace FakerLibrary.GeneratorClasses
             return list;
         }
 
-        public object Generate(Type type)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
