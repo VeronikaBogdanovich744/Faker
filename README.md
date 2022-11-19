@@ -1,4 +1,5 @@
 # Faker
+https://bsuir.ishimko.me/mpp-dotnet/2-faker
 Необходимо реализовать генератор объектов со случайными тестовыми данными:
 class User
 {
